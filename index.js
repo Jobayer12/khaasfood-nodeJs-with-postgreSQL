@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 var cors = require("cors");
@@ -33,8 +34,8 @@ app.get("/products/:category", product.category);
 app.get("/products/:category/:sub_category", product.sub_category);
 app.get("/search", searchQuery.search);
 
-console.log("app running");
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(process.env.PORT_ID, () =>
+  console.log(`Example app listening on port ${process.env.PORT_ID}!`)
+);
 
 // select uid,name from public.product  where name like '%organic eg%' union all select uid, name from public.popular where name like '%organic eg%' union all select uid, name from public.product  where name like '%organic eg%'
